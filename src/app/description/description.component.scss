@@ -1,0 +1,101 @@
+@import '../../global.scss';
+@import '../../app//login/login.component.scss';
+#sideBar{
+    // display: none;
+    width: 100%;
+
+}
+#main{
+    width: 80%;
+    display: none;
+}
+.listOfFleets{
+    padding: 0 !important;
+     :hover{
+        background-color: var(--ion-color-light-shade);
+    }
+}
+.itemsList{
+     border-bottom: 1px solid var(--ion-color-light-shade);
+     padding: .7rem 0;
+    cursor: pointer;
+   
+
+}
+
+.itemsList span{
+    margin: 0 1rem;;
+    font-size: large;
+}
+
+
+
+
+.content{
+    box-shadow: 1px 1px 15px var(--ion-color-light-shade);
+    min-height: 85vh;
+    padding: 0.5rem;
+
+}
+
+table{
+    border: none;
+    width: 100%;
+    table-layout: fixed
+}
+tr{
+    border: none;
+    border-bottom: 1px solid var(--ion-color-light-shade);
+    overflow: hidden;
+
+
+}
+td{
+    border: none;
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-family: sans-serif;
+    overflow: hidden;
+
+
+}
+.secondTd{
+    width: 60%;
+}
+
+.SubmitButton{
+    margin-top: 1rem;
+    float: right;
+}
+
+.hederHolder{
+    background-color: red;
+}
+
+#headerCon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .5rem;
+}
+
+.closeIcon{
+    display:none;
+}
+
+@media (min-width: $breakpoint-md) {
+  .deatailcon{
+    padding: 1rem;
+    // min-height: 100vh;
+    }
+    .content{
+    padding: 1.5rem;
+
+}
+.secondTd{
+    width: 80%;
+}
+
+}
+
+

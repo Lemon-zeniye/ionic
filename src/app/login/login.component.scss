@@ -1,24 +1,71 @@
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
 #container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
 }
+
 .form{
-    width: 30rem;
-    height: 10rem;
-    border: 1px solid white;
-    border-radius: 4px;
-    // box-shadow: 1px 1px 5px white;
+    height: 20vh;
+    width: 90%;
+    border: 1px solid var(--ion-color-light-shade);
+    box-shadow: 1px 1px 15px var(--ion-color-light-shade);
+    border-radius: 6px;
+
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-.loginInput{
-    width: 20rem;
+    justify-content: space-around;
+    
 }
 
+.inputCon{
+    width: 90%;
+}
 .SubmitButton{
     float: right;
     margin-top: 1rem;
+}
+
+.label{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+@media (min-width: $breakpoint-sm) {
+  .form{
+    height: 25vh;
+    width: 80%;
+  }
+
+  // Other styles for small screens and above
+}
+
+@media (min-width: $breakpoint-md) {
+  .form{
+     height: 30vh;
+    width: 60%;
+  }
+
+}
+
+@media (min-width: $breakpoint-lg) {
+  .form{
+    height: 30vh;
+    width: 55%;
+}
+
+}
+
+@media (min-width: $breakpoint-xl) {
+   .form{
+    height: 40vh;
+    width: 35%;
+}
 }

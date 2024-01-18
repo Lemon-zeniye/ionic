@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <div id="container">
 
-    <ion-card>
+    <!-- <ion-card>
       <ion-card-header>
         <ion-card-title>Login Form</ion-card-title>
       </ion-card-header>
@@ -10,12 +10,15 @@
          <ion-input class="loginInput" label="Outline input" type="number" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
         <ion-button class="SubmitButton">Submit</ion-button>
       </ion-card-content>
-    </ion-card>
-    <!-- <form class="form">
-      <div>
-        <ion-input class="loginInput" label="Outline input" type="number" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
-        <ion-button class="SubmitButton">Submit</ion-button>
+    </ion-card> -->
+
+     
+    <form class="form">
+      <!-- <label class="label">Login Form</label> -->
+      <div class="inputCon">
+        <ion-input [(ngModel)]="imeeNumber" name="imeeNumber" class="loginInput" label="Enter IMEI Number" type="number" label-placement="floating" fill="outline" placeholder="IMEI"></ion-input>
+        <ion-button class="SubmitButton" (click)="onSubmit()" >Submit</ion-button>
       </div>
-    </form> -->
+    </form>
   </div>
 </ion-content>
