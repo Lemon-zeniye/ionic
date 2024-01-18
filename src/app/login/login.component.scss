@@ -1,0 +1,24 @@
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.form{
+    width: 30rem;
+    height: 10rem;
+    border: 1px solid white;
+    border-radius: 4px;
+    // box-shadow: 1px 1px 5px white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginInput{
+    width: 20rem;
+}
+
+.SubmitButton{
+    float: right;
+    margin-top: 1rem;
+}
