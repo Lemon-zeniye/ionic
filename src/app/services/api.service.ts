@@ -11,6 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   
   api_url = environment.api_url;
+  responceData: any[] = []
 
   get(endpoint: string, params?: any,): Observable<any> {
     return this.http.get(this.api_url + endpoint, { params: params }).pipe(
@@ -37,5 +38,6 @@ export class ApiService {
         })
       );
   }
+
 
 }

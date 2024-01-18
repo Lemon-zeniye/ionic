@@ -26,11 +26,11 @@ export class LoginComponent  implements OnInit {
   
     this.apiService.get(`tasks/taskbyimei/${this.imeeNumber}`).subscribe((data) => {
       console.log(data)
+      this.apiService.responceData = data;
+      this.router.navigate(['/tasks'], {queryParams: {id:this.imeeNumber}})
       loading.dismiss();
     }, (error) => {
       loading.dismiss();
-      this.router.navigate(['/tasks'], {queryParams: {id:this.imeeNumber}})
-
     })
     // console.log(this.imeeNumber)
     // this.router.navigate(['/tasks'])

@@ -137,8 +137,8 @@
           
         <div class="SubmitButton">
           <ion-button (click)="onSubmit(detail.id)" *ngIf="!showFinshButton">Start</ion-button>
-          <ion-button (click)="onCancel()" *ngIf="showFinshButton" >Cancel</ion-button>
-          <ion-button  (click)="onFinish()" *ngIf="showFinshButton">Finsh</ion-button>
+          <ion-button (click)="onCancel(detail.id)" *ngIf="showFinshButton" >Cancel</ion-button>
+          <ion-button  (click)="onFinish(detail.id)" *ngIf="showFinshButton">Finsh</ion-button>
         </div>
 
       </div>
