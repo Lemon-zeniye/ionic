@@ -38,6 +38,11 @@ export class ApiService {
         })
       );
   }
+// &key=${this.apiKey}
+  getAddress(latitude: number, longitude: number): Observable<any> {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}`;
+    return this.http.get(url);
+  }
 
 
 }

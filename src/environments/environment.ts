@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   api_url: 'https://fleet.appdiv.com/api/',
+nominatimBaseUrl : 'https://nominatim.openstreetmap.org/reverse',
+
 };
 
 /*

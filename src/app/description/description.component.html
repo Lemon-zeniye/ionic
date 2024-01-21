@@ -1,153 +1,63 @@
-<!-- <ion-split-pane when="xs" contentId="main" >
-  <ion-menu contentId="main" id="sideBar">
-    <ion-header>
-      <ion-toolbar   color="tertiary">
-        <div id="headerCon">
-          <ion-title>Tasks</ion-title>
-          <div class="closeIcon">
-            <ion-icon  name="close" aria-hidden="true"></ion-icon>
-          </div>
-        </div>
-      </ion-toolbar>
-    </ion-header>
-    <ng-container *ngIf="items; else nodata" >
-
-       <ion-content   class="ion-padding listOfFleets">
-        <ng-container *ngFor="let data of items; let i = index">
-          <div  (click)="navigate(i)"  class="itemsList" >
-          <span >{{data?.description}}</span>
-          </div> 
-        </ng-container>
-         
-      </ion-content>
-
-    </ng-container>
-    <ng-template #nodata>
-       <ion-content   class="ion-padding"> NO data </ion-content>
-    </ng-template>
-  </ion-menu>
-
-  <div class="ion-page" id="main">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Task Details</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding"> 
-      <ng-container *ngIf="detail" >
-        <div class="content">
-           <h2>{{detail.description}}</h2>
-        <table>
-          <tbody>
-            <tr>
-              <td>Time Start</td>
-              <td class="secondTd">{{detail.startTime}} - {{detail.endTime}}</td>
-            </tr>
-            <tr>
-              <td>Location</td>
-              <td class="secondTd">{{detail.startLatitude}} , {{detail.startLongitude}}</td>
-            </tr>
-            <tr>
-              <td>Destination</td>
-              <td class="secondTd">{{detail.endLatitude}} , {{detail.endLongitude}}</td>
-            </tr>
-             <tr>
-              <td>Remark</td>
-              <td class="secondTd">{{detail.remark}} </td>
-            </tr>
-          </tbody>
-          <tr>
-
-          </tr>
-        </table>
-
-          
-        <div class="SubmitButton">
-          <ion-button (click)="onSubmit()" *ngIf="!showFinshButton">Start</ion-button>
-          <ion-button (click)="onCancel()" *ngIf="showFinshButton" >Cancel</ion-button>
-          <ion-button  (click)="onFinish()" *ngIf="showFinshButton">Finsh</ion-button>
-        </div>
-
-      </div>
+<div class="combined-view-container">
+  <div class="content-list" [class.open]="isSidebarOpen">
+    <div class="titleCon">
+       <div class="toggle-btn" (click)="toggleSidebar()">☰</div>
+      <h1>Tasks</h1>
+    </div>
+    <ng-container class="listContainer" *ngFor="let data of items; let i = index">
+        <div  (click)="navigate(i)"  class="itemsList" >
+        <span >{{data?.description}}</span>
+        </div> 
       </ng-container>
-    </ion-content>
   </div>
-</ion-split-pane> -->
-
-<ion-menu [type]="menuType" contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Tasks</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ng-container *ngIf="items; else nodata" >
-
-       <ion-content   class="ion-padding listOfFleets">
-        <ng-container *ngFor="let data of items; let i = index">
-          <div  (click)="navigate(i)"  class="itemsList" >
-          <span >{{data?.description}}</span>
-          </div> 
-        </ng-container>
-         
-      </ion-content>
-
-    </ng-container>
-    <ng-template #nodata>
-       <ion-content   class="ion-padding"> NO data </ion-content>
-    </ng-template>
-  <!-- <ion-content class="ion-padding">This is the menu content.</ion-content> -->
-</ion-menu>
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Task Details</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding"> 
+  <div class="detail-view">
+     <div class="titleCon">
+      <h1>Task Details</h1>
+     </div>
       <ng-container *ngIf="detail" >
         <div class="content">
            <h2>{{detail.description}}</h2>
-        <table>
-          <tbody>
-            <tr>
-              <td>Time Start</td>
-              <td class="secondTd">{{detail.startTime}} - {{detail.endTime}}</td>
-            </tr>
-            <tr>
-              <td>Location</td>
-              <td class="secondTd">{{detail.startLatitude}} , {{detail.startLongitude}}</td>
-            </tr>
-            <tr>
-              <td>Destination</td>
-              <td class="secondTd">{{detail.endLatitude}} , {{detail.endLongitude}}</td>
-            </tr>
-             <tr>
-              <td>Remark</td>
-              <td class="secondTd">{{detail.remark}} </td>
-            </tr>
-          </tbody>
-          <tr>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Time Start</td>
+                  <td class="secondTd">
+                    {{formatTime(detail.startTime)}} , {{ formatTime(detail.endTime)}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Location</td>
+                  <td class="secondTd">
+                    <span *ngIf="!startPlaceName">{{detail.startLatitude}} , {{detail.startLongitude}}</span>
+                    <span *ngIf="startPlaceName"> {{ startPlaceName }}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Destination</td>
+                  <td class="secondTd">
+                    <span *ngIf="!endPlaceName"> {{detail.endLatitude}} , {{detail.endLongitude }}</span>
+                    <span *ngIf="endPlaceName"> {{endPlaceName }} </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Remark</td>
+                  <td class="secondTd">{{detail.remark}} </td>
+                </tr>
+              </tbody>
+              <tr>
 
-          </tr>
-        </table>
+              </tr>
+            </table>
 
           
         <div class="SubmitButton">
-          <ion-button (click)="onSubmit(detail.id)" *ngIf="!showFinshButton">Start</ion-button>
-          <ion-button (click)="onCancel(detail.id)" *ngIf="showFinshButton" >Cancel</ion-button>
-          <ion-button  (click)="onFinish(detail.id)" *ngIf="showFinshButton">Finsh</ion-button>
+          <ion-button (click)="onButtonClick()" *ngIf="!showFinshButton">Open Direction</ion-button>
+          <ion-button (click)="onSubmit(detail.id, 'Start')" *ngIf="!showFinshButton">Start</ion-button>
+          <ion-button (click)="onSubmit(detail.id, 'Cancel')" *ngIf="showFinshButton" >Cancel</ion-button>
+          <ion-button  (click)="onSubmit(detail.id, 'End')" *ngIf="showFinshButton">Finsh</ion-button>
         </div>
 
-      </div>
+       </div>
       </ng-container>
-    </ion-content>
+  </div>
 </div>
- <ion-toast
-    [isOpen]="isToastOpen"
-    [message]="message"
-    [duration]="3000"
-  
-  ></ion-toast>

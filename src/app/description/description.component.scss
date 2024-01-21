@@ -66,11 +66,9 @@ td{
 .SubmitButton{
     margin-top: 1rem;
     float: left;
+    cursor: pointer;
 }
 
-.hederHolder{
-    background-color: red;
-}
 
 #headerCon{
     display: flex;
@@ -99,3 +97,86 @@ td{
 }
 
 
+///////////// 
+/* combined-view.component.scss */
+/* combined-view.component.scss */
+
+.combined-view-container {
+  display: flex;
+  height: 100vh;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.content-list {
+  width: 20%;
+  overflow-y: auto;
+  @media (max-width: 768px) {
+
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+    z-index: 1;
+    background:  var(--ion-color-light-shade);
+
+    &.open {
+      left: 0;
+    }
+  }
+  .listContainer{
+    width: 100%; box-shadow: 1px 1px 15px var(--ion-color-light-shade);
+
+  }
+
+  .list-item {
+    padding: 15px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--ion-color-success-contrast);
+
+    &:hover {
+      background-color: var(--ion-color-light-shade);
+    }
+  }
+
+  .toggle-btn {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.detail-view {
+  width: 80%;
+  padding: 20px;
+  padding-top: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+}
+.titleCon{
+    padding: 4px;
+    text-align: center;
+    border-bottom: 1px solid var(--ion-color-light-shade);
+    // box-shadow: 0px 5px 15px var(--ion-color-light-shade);
+
+}
